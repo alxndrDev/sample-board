@@ -31,7 +31,7 @@ public class Board {
     @Default
     private int views = 0;
 
-    private YnType pinnedYn;
+    private YnType isPinned;
 
     @Default
     @Enumerated(EnumType.STRING)

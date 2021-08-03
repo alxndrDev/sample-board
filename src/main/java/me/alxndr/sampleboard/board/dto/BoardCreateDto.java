@@ -16,7 +16,7 @@ public class BoardCreateDto {
 
     private String content;
 
-    private YnType pinnedYn;
+    private YnType isPinned;
 
     private YnType isPublished;
 

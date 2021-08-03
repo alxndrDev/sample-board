@@ -13,7 +13,7 @@ import org.mapstruct.factory.Mappers;
 public interface BoardMapper {
     BoardMapper INSTANCE = Mappers.getMapper(BoardMapper.class);
 
-    Board createDtoToEntity(BoardCreateDto dto);
+    Board toEntity(BoardCreateDto dto);
 
     Board toEntity(BoardDto dto);
 
