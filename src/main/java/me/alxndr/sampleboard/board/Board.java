@@ -2,6 +2,8 @@ package me.alxndr.sampleboard.board;
 
 import lombok.*;
 import lombok.Builder.Default;
+import me.alxndr.sampleboard.board.dto.BoardCreateDto;
+import me.alxndr.sampleboard.board.dto.BoardUpdateDto;
 import me.alxndr.sampleboard.common.YnType;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -46,5 +48,22 @@ public class Board {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+
+    public static Board create(BoardCreateDto dto) {
+        return Board.builder()
+                .title(dto.getTitle())
+                .content(dto.getContent())
+                .isPinned(dto.getIsPinned())
+                .isPublished(dto.getIsPublished())
+                .build();
+    }
+
+    public void updateBoard(BoardUpdateDto dto) {
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+        this.isPinned = dto.getIsPinned();
+        this.isPublished = dto.getIsPublished();
+    }
 
 }
