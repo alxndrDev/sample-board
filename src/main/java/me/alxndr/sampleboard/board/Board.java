@@ -36,11 +36,13 @@ public class Board {
 
     private YnType pinedYn;
 
+    @Default
     @Enumerated(EnumType.STRING)
-    private YnType isDeleted;
+    private YnType isDeleted = YnType.N;
 
+    @Default
     @Enumerated(EnumType.STRING)
-    private YnType isPublished;
+    private YnType isPublished = YnType.Y;
 
     @CreatedDate
     private LocalDateTime createdAt;
