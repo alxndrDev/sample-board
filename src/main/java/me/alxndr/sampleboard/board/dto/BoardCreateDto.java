@@ -7,7 +7,7 @@ import me.alxndr.sampleboard.common.YnType;
  * @author : Alexander Choi
  * @date : 2021/08/03
  */
-@Getter
+@Getter @Setter
 @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class BoardCreateDto {

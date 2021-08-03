@@ -3,6 +3,7 @@ package me.alxndr.sampleboard.board.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.alxndr.sampleboard.common.YnType;
 import org.hibernate.type.YesNoType;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  * @author : Alexander Choi
  * @date : 2021/08/03
  */
-@Getter
+@Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 public class BoardDto {
 

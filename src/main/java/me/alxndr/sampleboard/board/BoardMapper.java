@@ -13,7 +13,9 @@ import org.mapstruct.factory.Mappers;
 public interface BoardMapper {
     BoardMapper INSTANCE = Mappers.getMapper(BoardMapper.class);
 
-    Board toCreateEntity(BoardCreateDto dto);
+    Board createDtoToEntity(BoardCreateDto dto);
+
+    Board toEntity(BoardDto dto);
 
     BoardDto toDto(Board board);
 

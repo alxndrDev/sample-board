@@ -27,13 +27,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     compileOnly 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
-    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
