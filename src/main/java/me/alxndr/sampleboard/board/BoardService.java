@@ -43,6 +43,7 @@ public class BoardService {
 
     @Transactional
     public Board updateBoard(BoardUpdateDto dto) {
+
         Board board = getBoard(dto.getId());
 
         board.updateBoard(dto);

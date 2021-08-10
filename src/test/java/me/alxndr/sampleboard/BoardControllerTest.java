@@ -47,10 +47,14 @@ class BoardControllerTest {
                 .isPublished(YnType.Y)
                 .build();
 
+        String content = objectMapper.writeValueAsString(createDto);
+
+        System.out.println("content = " + content);
+
         mockMvc.perform(post("/api/board")
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(createDto)))
+                    .content(content))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(header().exists("Location"));

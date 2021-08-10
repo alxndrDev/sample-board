@@ -6,6 +6,7 @@ import me.alxndr.sampleboard.board.dto.BoardCreateDto;
 import me.alxndr.sampleboard.board.dto.BoardUpdateDto;
 import me.alxndr.sampleboard.common.YnType;
 import me.alxndr.sampleboard.member.Member;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -48,7 +49,7 @@ public class Board {
     @Enumerated(EnumType.STRING)
     private YnType isPublished = YnType.Y;
 
-    @CreatedDate
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
