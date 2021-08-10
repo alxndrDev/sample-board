@@ -3,6 +3,7 @@ package me.alxndr.sampleboard;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.alxndr.sampleboard.board.dto.BoardCreateDto;
 import me.alxndr.sampleboard.common.YnType;
+import me.alxndr.sampleboard.member.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ class BoardControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Autowired
+    MemberRepository memberRepository;
+
     @Test
     public void createTest() throws Exception {
 
@@ -43,12 +47,10 @@ class BoardControllerTest {
                 .isPublished(YnType.Y)
                 .build();
 
-
         mockMvc.perform(post("/api/board")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(createDto))
-        )
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(createDto)))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(header().exists("Location"));

@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import me.alxndr.sampleboard.board.dto.BoardCreateDto;
 import me.alxndr.sampleboard.board.dto.BoardDto;
 import me.alxndr.sampleboard.board.dto.BoardUpdateDto;
+import me.alxndr.sampleboard.member.Member;
+import me.alxndr.sampleboard.member.MemberRepository;
+import me.alxndr.sampleboard.member.MemberService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,17 +22,21 @@ import java.util.Optional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final MemberService memberService;
 
     public BoardDto findBoard(Long id) {
         Board board = getBoard(id);
         BoardDto boardDto = BoardMapper.INSTANCE.toDto(board);
-
         return boardDto;
     }
 
     public Board createBoard(BoardCreateDto dto) {
-        Board board = Board.create(dto);
+
+        Member member = memberService.getMember(1L);
+
+        Board board = Board.create(dto, member);
         Board savedBoard = boardRepository.save(board);
+
 
         return savedBoard;
     }

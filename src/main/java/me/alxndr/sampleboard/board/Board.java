@@ -5,6 +5,7 @@ import lombok.Builder.Default;
 import me.alxndr.sampleboard.board.dto.BoardCreateDto;
 import me.alxndr.sampleboard.board.dto.BoardUpdateDto;
 import me.alxndr.sampleboard.common.YnType;
+import me.alxndr.sampleboard.member.Member;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -25,6 +26,10 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "board_id")
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     private String title;
 
@@ -50,8 +55,9 @@ public class Board {
     private LocalDateTime updatedAt;
 
 
-    public static Board create(BoardCreateDto dto) {
+    public static Board create(BoardCreateDto dto, Member member) {
         return Board.builder()
+                .member(member)
                 .title(dto.getTitle())
                 .content(dto.getContent())
                 .isPinned(dto.getIsPinned())
